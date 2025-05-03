@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Developer Call Dashboard</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      h2,
+      h3 {
+        margin-top: 0;
+      }
+      #dashboardContainer {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+      }
+      #userListSection {
+        flex: 1;
+      }
+      #callControlSection {
+        flex: 1;
+        border-left: 1px solid #ccc;
+        padding-left: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      button {
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-left: 5px;
+      }
+      .call-btn {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+      }
+      .call-btn:disabled {
+        background-color: #ccc;
+      }
+      #ongoingCallSection {
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid #4caf50;
+        background-color: #f0fff0;
+        display: none;
+      }
+      #ongoingCallSection p {
+        margin: 5px 0;
+      }
+      #hangUpButton {
+        background-color: #f44336;
+        color: white;
+        border: none;
+      }
+      #notification {
+        margin-top: 15px;
+        color: red;
+        font-weight: bold;
+      }
+      .status-available {
+        color: green;
+      }
+      .status-busy {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Developer Dashboard</h1>
+    <h2>Your ID: <span id="myID">...</span></h2>
+
+    <div id="dashboardContainer">
+      <div id="userListSection">
+        <h3>Connected Site Users</h3>
+        <table id="userTable">
+          <thead>
+            <tr>
+              <th>User ID</th>
+              <th>IP Address</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="userListBody"></tbody>
+        </table>
+      </div>
+
+      <div id="callControlSection">
+        <h3>Call Control</h3>
+        <div id="notification"></div>
+
+        <div id="ongoingCallSection">
+          <p id="callStatus">No active call.</p>
+          <button id="hangUpButton">Hang Up</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script type="module" defer src="/dashboard.js"></script>
+  </body>
+</html>
